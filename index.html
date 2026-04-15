@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Otaku Community | Komunitas Anime, Art & GFX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #f0f0f0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* custom scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1a3a;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff7b89;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* header hero */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 60px 60px 40px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #FFDEE9, #FFB5C8, #FF9A9E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .emoji-badge {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* kartu grup */
+        .section-title {
+            font-size: 1.8rem;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 6px solid #ff7b89;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .group-card {
+            background: rgba(20, 15, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 24px 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 123, 137, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .group-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff7b89;
+            background: rgba(30, 20, 60, 0.8);
+            box-shadow: 0 20px 30px rgba(255, 123, 137, 0.2);
+        }
+
+        .group-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .group-card h3 {
+            font-size: 1.7rem;
+            margin: 10px 0;
+        }
+
+        .group-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 15px 0;
+        }
+
+        .btn-wa {
+            display: inline-block;
+            background: #25D366;
+            color: #111;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-wa:hover {
+            background: #20b859;
+            transform: scale(1.02);
+            color: white;
+        }
+
+        /* rules & perkenalan */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .info-box {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 25px;
+            border-left: 5px solid #ff7b89;
+        }
+
+        .info-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rule-list {
+            list-style: none;
+        }
+
+        .rule-list li {
+            margin: 12px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .rule-list li::before {
+            content: "🌸";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .warning {
+            background: #ff7b8922;
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #ff7b89;
+        }
+
+        /* admin & sosial */
+        .admin-section {
+            background: rgba(0,0,0,0.4);
+            border-radius: 40px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .admin-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .admin-card {
+            background: #1e1a3a;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: bold;
+            border: 1px solid #ffb5c8;
+        }
+
+        .sosmed-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .sosmed-link {
+            background: #0f0c29;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            border: 1px solid #ff7b89;
+        }
+
+        .sosmed-link:hover {
+            background: #ff7b89;
+            color: #0f0c29;
+            transform: scale(1.03);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+        }
+
+        .perkenalan-demo {
+            background: #00000055;
+            padding: 15px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 650px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="emoji-badge">🎉✨🤩</div>
+        <h1>Otaku Community</h1>
+        <p>welcome to otaku community adik² 🤩</p>
+        <p style="margin-top: 8px;">✨ community dibuat untuk kalian yg butuh teman yg sefrekuensi <br>
+        contohnya <strong>anime, art/gambar, gfx</strong> dll — jadi semoga betah ya ✨</p>
+    </div>
+
+    <!-- Link Grup -->
+    <div class="section-title">
+        <span>📱</span> <span>✦ LINK GRUP WHATSAPP ✦</span>
+    </div>
+    <div class="group-grid">
+        <div class="group-card">
+            <div class="group-icon">🎎</div>
+            <h3>ParaOtaku</h3>
+            <div class="group-desc">Grup utama seru-seruan, ngobrol anime, daily chat & temenan</div>
+            <a href="https://chat.whatsapp.com/D5iVAL37RAfB3rGCN0f0K7?mode=gi_t" class="btn-wa" target="_blank">✨ Join Grup Utama</a>
+        </div>
+        <div class="group-card">
+            <div class="group-icon">🎨🖌️</div>
+            <h3>GFX Community</h3>
+            <div class="group-desc">Khusus desain grafis, GFX, edit-edit keren, belajar bareng</div>
+            <a href="https://chat.whatsapp.com/JBYMW6gDVfKAvRGDUKy52s" class="btn-wa" target="_blank">✨ Join Grup GFX</a>
+        </div>
+        <div class="group-card">
+            <div class="group-icon">🖼️✏️</div>
+            <h3>Art / Gambar</h3>
+            <div class="group-desc">Pamer artwork, fanart, sketches, digital painting & inspirasi</div>
+            <a href="https://chat.whatsapp.com/Bs06rH6d1MoK6db11i1q2O" class="btn-wa" target="_blank">✨ Join Art Group</a>
+        </div>
+        <div class="group-card">
+            <div class="group-icon">🌸✨</div>
+            <h3>Community Hub</h3>
+            <div class="group-desc">Grup ekstra buat yang mau makin kenal semua anggota</div>
+            <a href="https://chat.whatsapp.com/Bogyy7BrdMSFPPmxu8ICMU" class="btn-wa" target="_blank">✨ Join Community</a>
+        </div>
+    </div>
+
+    <!-- Perkenalan + Rules -->
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>📝 <span>Wajib Perkenalan Diri</span></h3>
+            <p>Member baru harus perkenalan diri dengan format:</p>
+            <div class="perkenalan-demo">
+                sebutan : (wajib) <br>
+                nama    : (opsional) <br>
+                age      : (opsional)
+            </div>
+            <p style="margin-top: 12px;">Contoh: <br> <code>sebutan : Kak Nao | nama : Nayla | age : 19</code></p>
+        </div>
+
+        <div class="info-box">
+            <h3>📜 <span>✦ Rules (Wajib Baca!) ✦</span></h3>
+            <ul class="rule-list">
+                <li>Dilarang share jomok / homo</li>
+                <li>Dilarang kirim foto/vid yg terlalu vulgar</li>
+                <li>Dilarang nge blame / bully member lain</li>
+                <li>Dilarang spam chat</li>
+                <li>Batas kirim link 1x sehari</li>
+                <li>Dilarang rasis</li>
+                <li>Dilarang ngehytamin waifu / husbu</li>
+                <li>✦ Toleransi dijunjung tinggi ✦</li>
+            </ul>
+            <div class="warning">
+                ⚠️ kalian punya 3 kesempatan. Jika melanggar rules lebih dari 3x langsung admin kick! <br>
+                "Jika kalian melanggar siap-siap anda telah dikeluarkan dari grup oleh admin 👌"
+            </div>
+            <p style="margin-top: 12px; text-align: center;">✅ Semua grup akan di buka 24/7</p>
+        </div>
+    </div>
+
+    <!-- Admin & Owner -->
+    <div class="admin-section">
+        <h3>👥 Owner & Admin Team</h3>
+        <div class="admin-list">
+            <span class="admin-card">🌟 Owner : Octa chan</span>
+            <span class="admin-card">🎀 Admin : Farez femboy</span>
+            <span class="admin-card">🌀 Admin : wayz halu</span>
+            <span class="admin-card">🍥 Admin : zyy bukan wibu</span>
+        </div>
+        <p style="margin-top: 10px;">💬 "kalo ada apa-apa atmin siap membantu 😘😘"</p>
+    </div>
+
+    <!-- Sosial Media Admin -->
+    <div class="section-title">
+        <span>📸</span> <span>SOSIAL MEDIA ADMIN</span>
+    </div>
+    <div style="background: rgba(0,0,0,0.3); border-radius: 40px; padding: 20px;">
+        <div class="sosmed-grid">
+            <a href="https://tiktok.com/@naka_senpai17" class="sosmed-link" target="_blank">🎵 TikTok Owner @naka_senpai17</a>
+            <a href="https://www.instagram.com/mas_gerr17/profilecard/?igsh=MTIzaXJyaHpwazZ1bQ==" class="sosmed-link" target="_blank">📷 IG Owner mas_gerr17</a>
+            <a href="https://www.instagram.com/farezskibidi?igsh=MW85dGlvMG1ucXY2aQ==" class="sosmed-link" target="_blank">🍭 IG Admin Farez</a>
+            <a href="https://www.instagram.com/zdanzzxyuu?igsh=M29rejhycTVqbnly" class="sosmed-link" target="_blank">✨ IG Admin Yuux</a>
+            <a href="https://www.instagram.com/wayxml44?igsh=MXd0YXZma3NmNzBtcg==" class="sosmed-link" target="_blank">🌀 IG Admin Wahyu</a>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <p>💖 Semoga betah yh di sini 💖</p>
+            <p style="font-size: 0.8rem;">#OtakuCommunity #AnimeLovers #GFX #ArtCommunity</p>
+        </div>
+    </div>
+
+    <!-- Footer & pesan tambahan -->
+    <footer>
+        <p>✨ Otaku Community — Teman sefrekuensi, satu visi, satu waifu ✨</p>
+        <p>⚠️ Ingat baca rules dengan hati-hati, jangan sampe kena kick ya adik² 😡🌸</p>
+        <p style="margin-top: 10px;">💻 Web resmi diperkenalkan oleh owner Octa chan & tim admin | Semua tautan mengarah ke grup WhatsApp resmi</p>
+        <p>🌸 24/7 aktif — enjoy your stay! 🌸</p>
+    </footer>
+</div>
+</body>
+</html>
